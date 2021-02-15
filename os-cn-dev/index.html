@@ -1,0 +1,1340 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Cloud Native Development - Red Hat Openshift studies</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cloud-native-development-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Red Hat Openshift studies" class="md-header-nav__button md-logo" aria-label="Red Hat Openshift studies">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Red Hat Openshift studies
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Cloud Native Development
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/jbcodeforce/openshift-studies/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Red Hat Openshift studies" class="md-nav__button md-logo" aria-label="Red Hat Openshift studies">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Red Hat Openshift studies
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jbcodeforce/openshift-studies/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        Kubernetes deeper dive
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kubernetes deeper dive" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes deeper dive
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k8s/k8s-0/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k8s/k8s-1/" class="md-nav__link">
+        Networking
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k8s/k8s-2/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k8s/k8s-3/" class="md-nav__link">
+        Demo it
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k8s/k8s-faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notes-ocp-training/" class="md-nav__link">
+        Notes from certification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k8s/k8s-comp/" class="md-nav__link">
+        Compendium
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        Use Openshift
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Use Openshift" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Use Openshift
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Cloud Native Development
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Cloud Native Development
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#source-to-image-s2i" class="md-nav__link">
+    Source to image (s2i)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#odo-openshift-do" class="md-nav__link">
+    ODO: Openshift Do
+  </a>
+  
+    <nav class="md-nav" aria-label="ODO: Openshift Do">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-concepts" class="md-nav__link">
+    Important concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-odo" class="md-nav__link">
+    Installing odo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developing-with-odo" class="md-nav__link">
+    Developing with ODO
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-odo-github" class="md-nav__link">
+    See odo github
+  </a>
+  
+    <nav class="md-nav" aria-label="See odo github">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-flask" class="md-nav__link">
+    Python Flask
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appsody" class="md-nav__link">
+    Appsody
+  </a>
+  
+    <nav class="md-nav" aria-label="Appsody">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    How it works
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#app-deployment" class="md-nav__link">
+    App Deployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mn-tekton" class="md-nav__link">
+    3 mn Tekton
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appsody-app-creation-examples" class="md-nav__link">
+    Appsody app creation examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Appsody app creation examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-python-flask-app" class="md-nav__link">
+    Create a python flask app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-quarkus-knative-app" class="md-nav__link">
+    Create quarkus knative app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-microprofile-30-app" class="md-nav__link">
+    Create a microprofile 3.0 app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-your-own-stack" class="md-nav__link">
+    Defining your own stack
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-readings" class="md-nav__link">
+    Future readings
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp4i/" class="md-nav__link">
+        Cloud Pak Integration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oc-cli/" class="md-nav__link">
+        oc CLI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment-ex/" class="md-nav__link">
+        Deployment examples
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spark-on-os/" class="md-nav__link">
+        Operators (with Spark)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knative/" class="md-nav__link">
+        Knative
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+      
+      <label class="md-nav__link" for="nav-5">
+        Operations
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Operations" data-md-level="1">
+        <label class="md-nav__title" for="nav-5">
+          <span class="md-nav__icon md-icon"></span>
+          Operations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sre/" class="md-nav__link">
+        SRE
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spark-on-os/" class="md-nav__link">
+        Operators (with Spark)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../istio/readme/" class="md-nav__link">
+        Istio
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compendium/" class="md-nav__link">
+        Compendium
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jbcodeforce.github.io/" class="md-nav__link">
+        Back to home
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#source-to-image-s2i" class="md-nav__link">
+    Source to image (s2i)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#odo-openshift-do" class="md-nav__link">
+    ODO: Openshift Do
+  </a>
+  
+    <nav class="md-nav" aria-label="ODO: Openshift Do">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-concepts" class="md-nav__link">
+    Important concepts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-odo" class="md-nav__link">
+    Installing odo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developing-with-odo" class="md-nav__link">
+    Developing with ODO
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-odo-github" class="md-nav__link">
+    See odo github
+  </a>
+  
+    <nav class="md-nav" aria-label="See odo github">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-flask" class="md-nav__link">
+    Python Flask
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appsody" class="md-nav__link">
+    Appsody
+  </a>
+  
+    <nav class="md-nav" aria-label="Appsody">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    How it works
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#app-deployment" class="md-nav__link">
+    App Deployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mn-tekton" class="md-nav__link">
+    3 mn Tekton
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appsody-app-creation-examples" class="md-nav__link">
+    Appsody app creation examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Appsody app creation examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-python-flask-app" class="md-nav__link">
+    Create a python flask app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-quarkus-knative-app" class="md-nav__link">
+    Create quarkus knative app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-microprofile-30-app" class="md-nav__link">
+    Create a microprofile 3.0 app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-your-own-stack" class="md-nav__link">
+    Defining your own stack
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-readings" class="md-nav__link">
+    Future readings
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jbcodeforce/openshift-studies/edit/master/docs/os-cn-dev.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="cloud-native-development-summary">Cloud Native Development Summary</h1>
+<h2 id="source-to-image-s2i">Source to image (s2i)</h2>
+<p>Source to image toolkit aims to simplify the deployment to OpenShift. It uses a build image to execute an assembly script that builds code and docker image without Dockerfile.  </p>
+<p>The following figure, shows the resources created by the <code>oc new-app</code> command when the argument is an application source code repository.</p>
+<p><img alt="s2i" src="https://rol.redhat.com/rol/static/static_file_cache/do180-4.2/OpenShift-dc-and-bc-3.png" /></p>
+<p>From an existing repository, <code>s2i create</code> add a set of elements to define the workflow into the repo. For example the command below will add Dockerfile and scripts to create a build image named <code>ibmcase/buildorderproducer</code> from the local folder where the code is.</p>
+<div class="highlight"><pre><span></span><code>s2i create ibmcase/buildorderproducer .
+</code></pre></div>
+<p>When the assemble script is done, the container image is committed to internal image repository. The CMD part of the dockerfile execute a run script.</p>
+<p>Here is another command to build the output image using existing build image on local code:</p>
+<div class="highlight"><pre><span></span><code>s2i build --copy .  centos/python-36-centos7 ibmcase/orderproducer
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>s2i takes the code from git, so to use the local code before committing it to github, add the <code>--copy</code> argument.</p>
+</div>
+<ul>
+<li>OpenShift builds applications against an image stream. The OpenShift installer populates several image streams by default during installation.  </li>
+</ul>
+<div class="highlight"><pre><span></span><code> oc get is -n OpenShift
+</code></pre></div>
+<p>If only a source repository is specified, oc new-app tries to identify the correct image stream to use for building the application</p>
+<h2 id="odo-openshift-do">ODO: Openshift Do</h2>
+<p><a href="https://odo.dev/docs/understanding-odo/">ODO</a> is a CLI for developer to abstract kubernetes. It can build and deploy your code to your cluster immediately after you save your changes. <code>odo</code> helps manage the components in a grouping to support the application features. A selection of runtimes, frameworks, and other components are available on an OpenShift cluster for building your applications. This list is referred to as the Developer Catalog.</p>
+<p>The main value propositions are:</p>
+<ul>
+<li>Abstracts away complex Kubernetes and OpenShift commands and configurations.</li>
+<li>Detects changes to local code and deploys it to the cluster automatically, giving instant feedback to validate changes in real time</li>
+</ul>
+<p>V2.0 is merging with Appsody where stacks are <a href="https://odo.dev/docs/deploying-a-devfile-using-odo/">devfile in odo</a>. A <strong>devfile</strong> is a portable file that describes your development environment. See some <a href="https://github.com/odo-devfiles">devfile examples</a></p>
+<h3 id="important-concepts">Important concepts</h3>
+<ul>
+<li><strong>Init containers</strong> are specialized containers that run before the application container starts and configure the necessary environment for the application containers to run. Init containers can have files that application images do not have, for example setup scripts</li>
+<li><strong>Application</strong> container is the main container inside of which the user-source code executes. It uses two volumes: emptyDir and PersistentVolume. The data on the PersistentVolume persists across Pod restarts.</li>
+<li>odo creates a <strong>Service</strong> for every application Pod to make it accessible for communication</li>
+<li>odo push workflow: <ul>
+<li>create resources like deployment config, service, secrets, PVC</li>
+<li>index source code files </li>
+<li>push code into the application container</li>
+<li>execute assemble and restart.</li>
+</ul>
+</li>
+</ul>
+<h3 id="installing-odo">Installing odo</h3>
+<p><a href="https://odo.dev/docs/installing-odo/">Last instructions to install</a>. </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># For MAC</span>
+curl -L https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-darwin-amd64 -o /usr/local/bin/odo
+chmod +x /usr/local/bin/odo
+<span class="c1"># For VSCode: Command P and</span>
+ext install redhat.vscode-openshift-connector
+</code></pre></div>
+<p>List existing software runtime catalog deployed on a cluster (For example Java and nodejs are supported runtimes):</p>
+<div class="highlight"><pre><span></span><code>odo catalog list components
+</code></pre></div>
+<h3 id="developing-with-odo">Developing with ODO</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># login to a OpenShift cluster like ROKS</span>
+odo  login --token<span class="o">=</span>s....vA c100-e.us-south.containers.cloud.ibm.com:30040
+<span class="c1"># Create a new project in OCP</span>
+odo project create jbsandbox
+<span class="c1"># change project inside OCP</span>
+odo project <span class="nb">set</span> jbsandbox 
+<span class="c1"># Create a component (from an existing project for ex)... then follow the different questions</span>
+odo component create
+<span class="c1"># list available component, with v2, the devfile list is also returned</span>
+odo catalog list components
+<span class="c1"># push to ocp</span>
+odo push
+<span class="c1"># delete an app</span>
+odo app list
+odo app delete myapp
+</code></pre></div>
+<p>Deploy a component to OpenShift creates 2 pods: one ...app-deploy and one ...-app</p>
+<hr />
+<p>To create a component (create a config.yml) from a java springboot app, once the jar is built, the following command defines (a <code>backend</code> named component) to run it on top of the java runtime:</p>
+<p><div class="highlight"><pre><span></span><code>odo create java backend --binary target/wildwest-1.0.jar
+</code></pre></div>
+The component is not yet deployed on OpenShift. With an odo create command, a configuration file called config.yaml has been created in the local directory. To see the config use:</p>
+<div class="highlight"><pre><span></span><code>odo config view
+
+COMPONENT SETTINGS
+------------------------------------------------
+PARAMETER         CURRENT_VALUE
+Type              java:8
+Application       app
+Project           myproject
+SourceType        binary
+Ref
+SourceLocation    target/wildwest-1.0.jar
+Ports             <span class="m">8080</span>/TCP,8443/TCP,8778/TCP
+Name              backend
+</code></pre></div>
+<p>Then to deploy the binary jar file to Openshift:</p>
+<p><div class="highlight"><pre><span></span><code>odo push
+</code></pre></div>
+OpenShift has created a container to host the backend component, deployed the container into a pod running on the OpenShift cluster, and started up the backend component.
+You can view the backend component being started up, in the <code>Developer</code> perspective, under the <code>Topology</code> view. When a dark blue circle appears around the backend component, the pod is ready and the backend component container will start running on it. (A light blue ring means the pod is in a pending state and hasn't started yet)</p>
+<p>OpenShift provides mechanisms to publish communication bindings from a program to its clients. This is referred to as linking. To link the current frontend component to the backend: </p>
+<div class="highlight"><pre><span></span><code>odo link backend --component frontend --port <span class="m">8080</span>
+</code></pre></div>
+<p>This will inject configuration information into the frontend about the backend and then restart the frontend component.</p>
+<p>To expose an application to external client, we need to add a URL:</p>
+<div class="highlight"><pre><span></span><code>odo url create frontend --port <span class="m">8080</span>
+odo push
+</code></pre></div>
+<p>To adapt to the developer changes, we can tell odo to watch for changes on the file system in the background using:</p>
+<div class="highlight"><pre><span></span><code>odo watch
+</code></pre></div>
+<p>Once the change is recognized, odo will push the changes to the frontend component and print its status to the terminal. </p>
+<h2 id="see-odo-github">See <a href="https://github.com/openshift/odo">odo github</a></h2>
+<h3 id="python-flask">Python Flask</h3>
+<p>Current base code is a Flask under <a href="https://github.com/odo-devfiles/python-ex">https://github.com/odo-devfiles/python-ex</a></p>
+<div class="highlight"><pre><span></span><code>mkdir project-name
+<span class="c1"># create the devfile and download starter code</span>
+odo create python --starter
+<span class="c1"># Deploy to OCP</span>
+odo push
+</code></pre></div>
+<h2 id="appsody">Appsody</h2>
+<p><a href="https://appsody.dev/">Appsody</a> provides pre-configured container images (stacks) and project templates for a growing set of popular open source runtimes and frameworks, providing a foundation on which to build applications for Kubernetes and Knative deployments.
+On k8s it uses the <strong><a href="https://appsody.dev/docs/reference/appsody-operator/">appsody operator</a></strong> to automate the installation and maintenance of a special type of Custom Resource Definitions (CRDs), called AppsodyApplication.</p>
+<p>On Mac install <strong>appsody</strong> with home brew:   <code>brew install appsody/appsody/appsody</code>. To update to new version: <code>brew upgrade appsody</code></p>
+<h3 id="how-it-works">How it works</h3>
+<p>Appsody includes a CLI and a daemon to control the life cycle of the application. Developers use the CLI to create a new application from an existing "stack" (1).</p>
+<p><img alt="Appsody components" src="../images/appsody-concept.png" /></p>
+<p>Stacks are defined in a repository. Repositories can be referenced from remote sources (e.g., GitHub) or can be stored locally on a filesystem.</p>
+<p>First we can get the list of templates available via the command, which list stacks from all known repo:</p>
+<div class="highlight"><pre><span></span><code>appsody list
+</code></pre></div>
+<p>Then create our own application using one of the template:</p>
+<div class="highlight"><pre><span></span><code>mkdir projectname
+appsody init java-openliberty
+<span class="c1"># another useful one</span>
+appsody init quarkus
+<span class="c1"># or ours</span>
+appsody init ibmcase/ibm-gse-eda-quarkus
+</code></pre></div>
+<p>In general the command is <code>appsody init &lt;repository-name&gt;/&lt;stack&gt;</code>. It is possible to initialize an existing project using the command: <code>appsody init &lt;stackname&gt; --no-template</code>.</p>
+<p>Appsody helps developer to do not worry about the details of k8s deployment and build. During a Appsody run, debug or test step (2), Appsody creates a Docker container based on the parent stack Dockerfile, and combines application code with the source code in the template.</p>
+<p>When a source code project is initialized with Appsody, you get a local Appsody development container where you can do the following commands:</p>
+<div class="highlight"><pre><span></span><code>appsody run
+appsody <span class="nb">test</span>
+appsody debug
+</code></pre></div>
+<p>One of the above command creates a daemon which monitors changes to any files and build and start a new docker container continuously.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># The daemon</span>
+ps -ef <span class="p">|</span> grep appsody
+<span class="m">501</span> <span class="m">4156</span> <span class="m">93070</span> appsody run
+<span class="c1"># the docker container</span>
+<span class="m">501</span> <span class="m">56789</span> <span class="m">4156</span> docker run --rm -p <span class="m">7777</span>:7777 -p <span class="m">9080</span>:9080 -p <span class="m">9443</span>:9443 --name scoring-mp-dev -v /Users/jeromeboyer/.m2/repository:/mvn/repository -v /Users/jeromeboyer/Code/jbcodeforce/myEDA/refarch-reefer-ml/scoring-mp/src:/project/user-app/src -v /Users/jeromeboyer/Code/jbcodeforce/myEDA/refarch-reefer-ml/scoring-mp/pom.xml:/project/user-app/pom.xml -v appsody-controller-0.3.3:/.appsody -t --entrypoint /.appsody/appsody-controller docker.io/appsody/java-microprofile:0.2 --mode<span class="o">=</span>run
+</code></pre></div>
+<p>The other basic commands are:</p>
+<ul>
+<li><strong>Run</strong>, to run. But you can use docker options like:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>appsody run --docker-options<span class="o">=</span><span class="s2">&quot;--env-file=postgresql.properties&quot;</span>
+<span class="c1"># connect to a local docker network</span>
+appsody run --network kafkanet
+</code></pre></div>
+<ul>
+<li><strong>Build</strong>: You can use the <code>appsody build</code> command to generate a deployment Docker image on your local Docker registry, and then manually deploy that image to your runtime platform of choice.</li>
+<li><strong>Deploy</strong>: You can use the <code>appsody deploy</code> command (3) to deploy the same deployment Docker image directly to a Kubernetes cluster that you are using for testing or staging. See next section.
+The full command template is:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>appsody deploy -t &lt;mynamespace/myrepository<span class="o">[</span>:tag<span class="o">]</span>&gt; --push-url <span class="nv">$IMAGE_REGISTRY</span> --push --namespace mynamespace <span class="o">[</span>--knative<span class="o">]</span>
+<span class="c1"># example</span>
+appsody deploy -t jbsandbox/eda-coldchain-agent:0.0.1 --push-url <span class="nv">$IMAGE_REGISTRY</span> --push --namespace jbsandbox
+</code></pre></div>
+<ul>
+<li>To undeploy: <code>appsody deploy delete</code></li>
+<li>You can delegate the build and deployment steps to an external pipeline, such as a Tekton pipeline that consumes the source code of your Appsody project after you push it to a GitHub repository.</li>
+<li><code>appsody stop</code></li>
+</ul>
+<p>See <a href="https://appsody.dev/docs/using-appsody/cli-commands/">Appsody CLI</a> commands.</p>
+<p>See this tutorial <a href="https://developer.ibm.com/components/appsody/tutorials/deploy-appsody-applications-to-openshift/">how to deploy on openshift</a></p>
+<h3 id="app-deployment">App Deployment</h3>
+<ol>
+<li>Log to the cluster</li>
+<li>Get the name of the available registry <code>oc get route --all-namespaces | grep registry</code>. Keep it in an env var: <code>export IMAGE_REGISTRY=default-route-openshift-image-registry.gse-eda-demo-202005-fa9ee67c9ab6a7791435450358e564cc-0000.us-south.containers.appdomain.cloud</code></li>
+<li>Login to this registry: <code>docker login -u $(oc whoami) -p $(oc whoami -t) $IMAGE_REGISTRY</code></li>
+<li>Create config map via yaml descriptor or command for all the dependent env variables, properties,... See <a href="https://ibm-cloud-architecture.github.io/refarch-kc/infrastructure/required-services/#apache-kafka">notes in this repo</a></li>
+<li>Deploy using a command like:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>appsody deploy -t jbsandbox/eda-coldchain-agent:0.0.1 --push-url $IMAGE_REGISTRY --push --namespace jbsandbox
+</code></pre></div>
+<p><code>appsody deploy -t dockerhub/imagename --push -n yournamespace</code> (3) will do the following:</p>
+<ul>
+<li>deploy <a href="https://github.com/appsody/appsody-operator">Appsody operator</a> into the given namespace if no operator found. (you can install it manually too see one of the instruction <a href="https://github.com/appsody/appsody-operator/tree/master/deploy/releases">depending of the release</a>)</li>
+<li>call <code>appsody build</code> and create a deployment image with the given tag</li>
+<li>push the image to docker hub or other repository</li>
+<li>create the <code>app-deploy.yaml</code> deployment manifest</li>
+<li>Apply it with:  <code>kubectl apply -f app-deploy.yaml</code>  within the given namespace</li>
+</ul>
+<p>Verify the operator is deployed:</p>
+<div class="highlight"><pre><span></span><code>oc get pods
+NAME                               READY     STATUS             RESTARTS   AGE
+appsody-operator-d8dfb4f5f-4dpwk   <span class="m">1</span>/1       Running            <span class="m">0</span>          4m34s
+</code></pre></div>
+<p>As part of the deployment manifest a service and a route are created. For example using a microprofile app the following command will verify everything went well.</p>
+<div class="highlight"><pre><span></span><code>curl http://scoring-mp-eda-sandbox.apps.green.ocp.csplab.local/health
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>appsody deploy delete -n yournamespace
+</code></pre></div>
+<p>To ensure that the latest version of your app is pushed to the cluster, use the -t flag to add a unique tag every time you redeploy your app. Kubernetes then detects a change in the deployment manifest, and pushes your app to the cluster again.</p>
+<h3 id="3-mn-tekton">3 mn Tekton</h3>
+<p><a href=""></a></p>
+<ul>
+<li><a href="https://github.com/appsody/tekton-example">Appsody tekton example</a></li>
+<li><a href="https://github.com/tektoncd/cli#useful-commands">Tekton CLI</a></li>
+</ul>
+<h2 id="appsody-app-creation-examples">Appsody app creation examples</h2>
+<h4 id="create-a-python-flask-app">Create a python flask app</h4>
+<p>The stack is not for production and is not fully supported. Here is an example of creating a simple webapp with flask, flask cli and gunicorn</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Get the default template from the stack</span>
+appsody init incubator/python-flask
+<span class="c1"># build an image with a name = the folder name based on the dockerfile from the stack</span>
+appsody build
+<span class="c1"># or run it directly</span>
+appsody run
+</code></pre></div>
+<p>You can add your own dockerfile to extend existing one. With <code>docker images</code> you can see what <code>appsody build</code> created, then you can use this image as source for your own docker image</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">&lt;nameofyourapp&gt;</span>
+<span class="k">ADD</span> stuff
+<span class="k">CMD</span> change the command
+</code></pre></div>
+<p>To add your own code.</p>
+<h4 id="create-quarkus-knative-app">Create quarkus knative app</h4>
+<div class="highlight"><pre><span></span><code>appsody init quarkus
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The container image will not be pushed to a remote container registry, and hence the container image url has to be <code>dev.local</code>, to make Knative deploy it without trying to pull it from external container registry.</p>
+</div>
+<p>Then do the following steps:</p>
+<ul>
+<li>update the index.html to provide some simple doc of the app</li>
+<li>add health, and openapi</li>
+</ul>
+<p><code>xml
+      &lt;dependency&gt;
+      &lt;groupId&gt;io.quarkus&lt;/groupId&gt;
+      &lt;artifactId&gt;quarkus-smallrye-health&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;io.quarkus&lt;/groupId&gt;
+      &lt;artifactId&gt;quarkus-smallrye-openapi&lt;/artifactId&gt;
+    &lt;/dependency&gt;</code>
+* If using kafka to support event driven solution add:</p>
+<div class="highlight"><pre><span></span><code>      <span class="nt">&lt;dependency&gt;</span>
+         <span class="nt">&lt;groupId&gt;</span>io.quarkus<span class="nt">&lt;/groupId&gt;</span>
+         <span class="nt">&lt;artifactId&gt;</span>quarkus-smallrye-reactive-messaging-kafka<span class="nt">&lt;/artifactId&gt;</span>
+       <span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<h4 id="create-a-microprofile-30-app">Create a microprofile 3.0 app</h4>
+<div class="highlight"><pre><span></span><code>appsody init java-openliberty
+</code></pre></div>
+<h3 id="defining-your-own-stack">Defining your own stack</h3>
+<p>See code in appsody-stacks/experimental/ibm-gse-eda-quarkus for one example of a kafka quarkus stack and <a href="https://appsody.dev/docs/stacks/develop/">Appsody tutorial</a> to get detail instructions.</p>
+<p>Stack has one dockerfile to help building the application and control the build, run and test steps of <code>Appsody</code>. And a second Dockerfile in the <code>image/project</code> folder to "dockerize" the final app. This Dockerfile is responsible for ensuring the combined dependencies are installed in the final image. It hosts the target <code>app-deploy.yaml</code> file used for kubernetes deployment.</p>
+<p>When designing a stack, we need to decide who controls the application: a web server in which the developer, user of the stack, is adding new end points, or the developer is controlling how the app starts and runs.</p>
+<p>See details in <a href="https://developer.ibm.com/technologies/containers/tutorials/create-appsody-stack">this note</a>.</p>
+<p>See <a href="https://appsody.dev/docs/stacks/environment-variables">appsody environment variables description in the product documentation</a></p>
+<p>See <a href="https://developer.ibm.com/tutorials/create-appsody-stack/">this other create appsody tutorial here</a>.</p>
+<p>Some considerations to address:</p>
+<ul>
+<li>select the technologies and libraries to use</li>
+<li>address how to verify dependencies</li>
+<li>define what kind of sample starter application</li>
+<li>address how to enable adding new libraries</li>
+<li>define what docker image repository to use, and what credentials</li>
+</ul>
+<p>Here is a summary of the steps to create a Kafka java stack for consumer and producer:</p>
+<ul>
+<li>Look to local cache for appsody stack</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">export</span> <span class="nv">APPSODY_PULL_POLICY</span><span class="o">=</span>IFNOTPRESENT
+</code></pre></div>
+<ul>
+<li>Create a starter stack, as a scaffold.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>$ appsody stack create ibm-gse-eda-quarkus --copy incubator/java-openliberty
+</code></pre></div>
+* Update the template folder, and then the stack.yml to define version number (e.g. 1.7.1), name, ...
+* Update the pom.xml under <code>image</code> folder.
+* Under the experimental folder build the stack using the <code>Dockerfile-stack</code> file with the following command</p>
+<p><div class="highlight"><pre><span></span><code>$ appsody stack package --image-namespace ibmcase
+
+Your <span class="nb">local</span> stack is available as part of <span class="sb">`</span>dev.local<span class="sb">`</span> repo.
+</code></pre></div>
+<em>This mean a file <code>ibm-gse-eda-quarkus.v1.7.1.templates.kafka.tar.gz</code> is created in <code>.appsody/stacks/dev.local/</code></em></p>
+<ul>
+<li>Test your stack scaffold</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ appsody init dev.local/ibm-gse-eda-quarkus kafka
+
+ Successfully initialized Appsody project with the dev.local/gse-eda-java-stack stack and the kafka template.
+</code></pre></div>
+<ul>
+<li>
+<p>Start the application scaffold using <code>appsody run</code>. If you are running with a remote kafka broker set the <code>scripts/appsody.env</code> variables accordingly.</p>
+</li>
+<li>
+<p>Modify the <code>Dockerfile-stack</code> file to include the base image and dependencies for the server and other predefined code.</p>
+</li>
+<li>
+<p>Package your stack to create a docker images that will be pushed to dockerhub registry</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>appsody stack package --image-namespace ibmcase --image-registry docker.io
+<span class="c1"># this command builds a docker image but also creates files under ~/.appsody/stacks/dev.local</span>
+ibm-gse-eda-quarkus.v0.4.1.source.tar.gz
+ibm-gse-eda-quarkus.v0.4.1.templates.default.tar.gz
+ibm-gse-eda-quarkus.v0.4.1.templates.kafka.tar.gz
+<span class="c1"># push the docker image created</span>
+docker push ibmcase/ibm-gse-eda-quarkus 
+</code></pre></div>
+<ul>
+<li>If not done <a href="https://docs.github.com/en/enterprise/2.13/user/articles/creating-releases">create a git release</a> in the <a href="https://github.com/ibm-cloud-architecture/appsody-stacks/">appsody-stack</a> github repository. See the <a href="https://github.com/ibm-cloud-architecture/appsody-stacks/releases">latest release</a></li>
+<li>Redefined the repository index, so from the source of all the stacks do</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>appsody stack add-to-repo ibmcase --release-url https://github.com/ibm-cloud-architecture/appsody-stacks/releases/download/0.4.1/
+<span class="c1"># this command updates the following files</span>
+ibmcase-index.json
+ibmcase-index.yaml
+</code></pre></div>
+* copy those file into root folder of the stack project</p>
+<ul>
+<li>Upload the source code and template archives to the release using drag and drop. The files are</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ibm-gse-eda-quarkus.v0.4.1.source.tar.gz
+ibm-gse-eda-quarkus.v0.4.1.templates.default.tar.gz
+ibm-gse-eda-quarkus.v0.4.1.templates.kafka.tar.gz
+ibmcase-index.json
+ibmcase-index.yaml
+</code></pre></div>
+<p>then publish the release. Which can be see at the URL: <a href="https://github.com/ibm-cloud-architecture/appsody-stacks/releases">https://github.com/ibm-cloud-architecture/appsody-stacks/releases</a>.</p>
+<p><code>appsody repo add ibmcase https://raw.githubusercontent.com/ibm-cloud-architecture/appsody-stacks/master/ibmcase-index.yaml</code></p>
+<h2 id="future-readings">Future readings</h2>
+<ul>
+<li><a href="https://developer.ibm.com/blogs/introduction-to-appsody/">Introduction to Appsody: Developing containerized applications for the cloud just got easier</a></li>
+<li><a href="https://developer.ibm.com/blogs/introduction-to-appsody/">Video Appsody overview</a></li>
+<li><a href="https://github.ibm.com/steve-arnold/kabanerodemoguide/blob/master/README.md">Kabanero - Appsody - Tekton - Openshift</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../k8s/k8s-comp/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Compendium
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../cp4i/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Cloud Pak Integration
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
